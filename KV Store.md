@@ -63,9 +63,33 @@ W + R <= N, strong consistency is not guaranteed.
 
 Dynamo DB and Cassandra DB adopt eventual consistency model.
 
+With eventual consistency approach, we need to have an inconsistency resolution, like versioning
+
+#### Inconsistency resolution: Versioning/Vector Clock
+
+Versioning: Treating each data modification as a new immutable version of data.
+Vector Clock: `[server, version]` pair associated with a data item. 
+Vector clock is represented as `D([S1, v1], [S2, v2],...,[Sn, vn])`. Here `D` is a data item, `v1` is a version counter, `s1` is a server number. 
+If data item `D` is written to server `Si`, the system must perform one of the following tasks:
+- Increment vi if `[Si,vi]` exists.
+- Otherwise, create a new entry `[Si,1]`
+
+Example:
+1. D1([Sx,1]) ------> write handled by Sx
+2. D2([Sx,2]) ------> write handled by Sx
+   The below two operations happen in parallel
+3. D3([Sx, 2], [Sy, 1]) ----------> write handled by Sy
+4. D4([Sx, 2],[Sz, 1]) -----------> write handled by Sz
+   Reconciled and written by Sx
+5. D5([Sx, 3], [Sy, 1], [Sz, 1])
+
+The `[server:version]` pair could grow rapidly. To fix this problem, we set a threshold for the length, and if it exceeds the limit, the oldest pairs are removed.
+This could lead to inefficiencies in reconciliation as the descendant relationship cannot be determined accurately. However, Dynamo DB has not yet encountered this problem in production.
+So it is still an acceptable solution for most companies.
+
 ### Handling Failures
 
-#### Failure detection 
+#### 1. Failure detection - Gossip Protocol
 
 Usually it requires two independent sources of information to mark a server down. Decentralized failure detection methods like Gossip protocol works best.
 - Each node maintains a node-membership list, which contains member IDs and heartbeat counters
@@ -74,5 +98,55 @@ Usually it requires two independent sources of information to mark a server down
 - Once nodes receive heartbeats, membership list is updated to the latest info.
 - If the heartbeat has not increased for more than predefined periods, the member is considered offline.
 
+#### 2. Handling Temporary Failures - Sloppy Quorum - Hinted Handoff
+
+System needs to deploy certain mechanisms to ensure availability after detecting failures through the Gossip protocol
+A technique called `"Sloppy Quorum"` can be used to improve availability.
+System chooses the first W healthy servers for writes and first R healthy servers on the hash ring. Offline servers are ignored.
+If a server is unavailable due to network or server failures, another server will process requests temporarily. When the down server comes back up, changes will be pushed back to achieve data consistency. 
+This process is callled `hinted handoff`. 
+
+#### 3. Handling Permanent Failures - Merkle Tree
+
+If a replica goes completely unavailable, we implement an anti-entropy protocol to keep replicas in sync. Anti-entropy involves comparing each piece of data on replicas and updating each replica to the newest version. 
+
+A `merkle tree` is used for inconsistency detection and minimizing the amount of data transferred.
+
+A hash tree or Merkle tree is a tree in which every non-leaf node is labeled with the has of the labels or values(in case of leaves) of its child nodes. 
+Hash trees allow efficient and secure verification of the contents of large data structres.
+
+Using Merkle trees, the data needed to be synchronized is proportional to the differences between the two replicas and not the amount of data they contain. 
+In real-world systems, the bucket size is quite big. Eg: 1M buckets per 1B keys, so each bucket contains 1000 keys.
+
+#### DC outage
+
+Replicate across multiple data centers. Even if a DC is completely offline, users can still access data through the other data centers.
+
+### Write Path
+
+- Write request is persisted on a commit log file
+- Data is saved in the memory cache
+- When the memory cache is full or reaches a pre-defined threshold, data is flushed to SSTable(A sorted string table) on disk. SSTable is a sorted list of <key, value> pairs.
+
+### Read Path
+
+- Check if data is in the memory cache. If so, return directly
+- If not, it will be retrieved from the disk instead.
+- We need an efficient way to find out which SSTable contains the key. `Bloom filter` is commonly used to solve this problem.
+- SSTables return the result of the data set
+- The result of the data set is returned to the client
 
 ### Wrap Up
+
+| Goal/Problems | Technique |
+| --- | --- |
+| Ability to store big data | Use consistent hashing to spread the load across servers|
+| High availability reads | Data replication, Multi-data center setup |
+| High availability writes | Versioning and conflict resolution with vector clocks |
+| Dataset partition | Consistent Hashing |
+| Incremental scalability | Consistent Hashing |
+| Heterogeneity | Consistent Hashing |
+| Tunable Consistency | Consistent Hashing |
+| Handling temporary failures | Sloppy Quorum and hinted handoff |
+| Handling permanent failures | Merkle tree |
+| Handling data center outage | Cross-data center replication |
