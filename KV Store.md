@@ -44,24 +44,36 @@ Advantages:
 
 ### Data Replication
 
-To achieve HA and reliability, data must be replicated asynchronously over N(configurable) servers. When the key is mapped on to the ring and if N = 3, the next 3 unique servers in the clockwise direction would replicate the data copies.
-Nodes in the same data center often fail at the same time due to power outages, network issues, natural disasters. For better reliability, replicas are placed in distinct data centers and these DCs are connected through high-speed networks.
+To achieve HA and reliability, data must be replicated asynchronously over N(configurable) servers. 
+
+When the key is mapped on to the ring and if N = 3, the next 3 unique servers in the clockwise direction would replicate the data copies.
+
+Nodes in the same data center often fail at the same time due to power outages, network issues, natural disasters. 
+
+For better reliability, replicas are placed in distinct data centers and these DCs are connected through high-speed networks.
 
 ### Consistency Models
-
+*****
 N = The number of replicas
+
 W = A write quorum - For a write operation to be considered as successful, write op must be acknowledged from W replicas
+
 R = A read quorum - For a read operation to be successful, a read op should wait for responses from at least R replicas
+*****
 
-W = 1 or R = 1, operation is returned quickly as the coordinator needs to wait for a response from any of the replicas
-W > 1 or R > 1, the system offers better consistency
-W + R > N, strong consistency is guaranteed as there must be at least one overlapping node that has the latest data to ensure consistency
+`W = 1 or R = 1`, operation is returned quickly as the coordinator needs to wait for a response from any of the replicas
 
-R = 1, W = N, the system is optimized for a fast read
-W = 1, R = N, the system is optimized for a fast write
-W + R <= N, strong consistency is not guaranteed.
+`W > 1 or R > 1`, the system offers better consistency
 
-Dynamo DB and Cassandra DB adopt eventual consistency model.
+`W + R > N`, strong consistency is guaranteed as there must be at least one overlapping node that has the latest data to ensure consistency
+
+`R = 1, W = N`, the system is optimized for a fast read
+
+`W = 1, R = N`, the system is optimized for a fast write
+
+`W + R <= N`, strong consistency is not guaranteed.
+
+`Dynamo DB` and `Cassandra DB` adopt eventual consistency model.
 
 With eventual consistency approach, we need to have an inconsistency resolution, like versioning
 
@@ -75,17 +87,19 @@ If data item `D` is written to server `Si`, the system must perform one of the f
 - Otherwise, create a new entry `[Si,1]`
 
 Example:
-1. D1([Sx,1]) ------> write handled by Sx
-2. D2([Sx,2]) ------> write handled by Sx
+1. `D1([Sx,1])` ------> write handled by Sx
+2. `D2([Sx,2])` ------> write handled by Sx
    The below two operations happen in parallel
-3. D3([Sx, 2], [Sy, 1]) ----------> write handled by Sy
-4. D4([Sx, 2],[Sz, 1]) -----------> write handled by Sz
+3. `D3([Sx, 2], [Sy, 1])` ----------> write handled by Sy
+4. `D4([Sx, 2],[Sz, 1])` -----------> write handled by Sz
    Reconciled and written by Sx
-5. D5([Sx, 3], [Sy, 1], [Sz, 1])
+5. `D5([Sx, 3], [Sy, 1], [Sz, 1])`
 
 The `[server:version]` pair could grow rapidly. To fix this problem, we set a threshold for the length, and if it exceeds the limit, the oldest pairs are removed.
-This could lead to inefficiencies in reconciliation as the descendant relationship cannot be determined accurately. However, Dynamo DB has not yet encountered this problem in production.
-So it is still an acceptable solution for most companies.
+
+This could lead to inefficiencies in reconciliation as the descendant relationship cannot be determined accurately. 
+
+However, Dynamo DB has not yet encountered this problem in production. So it is still an acceptable solution for most companies.
 
 ### Handling Failures
 
@@ -126,7 +140,8 @@ Replicate across multiple data centers. Even if a DC is completely offline, user
 
 - Write request is persisted on a commit log file
 - Data is saved in the memory cache
-- When the memory cache is full or reaches a pre-defined threshold, data is flushed to SSTable(A sorted string table) on disk. SSTable is a sorted list of <key, value> pairs.
+- When the memory cache is full or reaches a pre-defined threshold, data is flushed to SSTable(A sorted string table) on disk.
+- SSTable is a sorted list of <key, value> pairs.
 
 ### Read Path
 
