@@ -2,6 +2,8 @@
 
 ## Case Studies
 
+[How to Scale a system from 0 to 1 Million users](https://github.com/shreesha21/system-design-interview/blob/main/Scaling%20to%201M%20users.md)
+
 [Design a Key Value Store](https://github.com/shreesha21/system-design-interview/blob/main/KV%20Store.md)
 
 [Design a S3 Object Storage](https://github.com/shreesha21/system-design-interview/blob/main/KV%20Store.md)
