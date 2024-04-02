@@ -10,7 +10,7 @@
 
 [Design a Rate limiter](https://github.com/shreesha21/system-design-interview/blob/main/KV%20Store.md)
 
-[Design a UID Generator](https://github.com/shreesha21/system-design-interview/blob/main/KV%20Store.md)
+[Design a UID Generator](https://github.com/shreesha21/system-design-interview/blob/main/uid_gen.md)
 
 [Design a URL Shortener](https://github.com/shreesha21/system-design-interview/blob/main/KV%20Store.md)
 
