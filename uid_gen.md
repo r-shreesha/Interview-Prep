@@ -20,6 +20,8 @@
 3. Ticket Server
 4. Twitter snowflake approach
 
+![image](https://github.com/shreesha21/system-design-interview/blob/main/UID_Gen.png)
+
 ***
 ### Multi-master replication
 ***
@@ -79,3 +81,4 @@ If there is extra time at the end of the interview, additional talking points in
 * Clock synchronization: We assume that ID generation servers have the same clock. It might not be true when a server is running on multiple cores/Multi-machine scenarios. Popular solution is `Network Time Protocol`.
 * Section legnth tuning: fewer sequence number but more timestamp bits are effective for low concurrency and long-term applications
 * High availability: Since an ID generator is a mission critical system, it must be highly available.
+
