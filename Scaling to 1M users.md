@@ -37,3 +37,6 @@ a) Vertical Scaling (Not feasible, higher cost, SPOF)
 b) Horizontal Scaling (Sharding - separates large databases into smaller, easily managed parts(shards))
 
 11. Logging, Metrics, Monitoring, Automation
+
+### Useful References
+https://newsletter.systemdesign.one/p/aws-scale
