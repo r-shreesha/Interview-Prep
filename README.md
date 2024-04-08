@@ -41,7 +41,7 @@
 
 2) Intervals:
 
--https://lnkd.in/e2i7354g
+- https://lnkd.in/e2i7354g
 - https://lnkd.in/eMWAHsqt
 - https://lnkd.in/eGv_iaGZ
 
