@@ -29,7 +29,7 @@
 
 [Design a Key Value Store](https://github.com/shreesha21/system-design-interview/blob/main/KV%20Store.md)
 
-[Design a S3 Object Storage](https://github.com/shreesha21/system-design-interview/blob/main/KV%20Store.md)
+[Design a S3 Object Storage](https://github.com/shreesha21/system-design-interview/blob/main/s3.md)
 
 [Design a Rate limiter](https://github.com/shreesha21/system-design-interview/blob/main/KV%20Store.md)
 
