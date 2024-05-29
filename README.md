@@ -4,9 +4,11 @@
 
 [Brushup concepts](https://github.com/karanpratapsingh/system-design)
 
-[InterviewReady System Design Resources](https://github.com/InterviewReady/system-design-resources)
+[InterviewReady - System Design Resources](https://github.com/InterviewReady/system-design-resources)
 
 [Low Level Design](https://github.com/ashishps1/awesome-low-level-design)
+
+Time Management - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
 
 ## Case Studies
 
