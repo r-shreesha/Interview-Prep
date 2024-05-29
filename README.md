@@ -1,5 +1,7 @@
 # System design
 
+Guide on How to answer questions - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
+
 [Cheatsheet](https://gist.github.com/vasanthk/485d1c25737e8e72759f)
 
 [Brushup concepts](https://github.com/karanpratapsingh/system-design)
@@ -7,8 +9,6 @@
 [InterviewReady - System Design Resources](https://github.com/InterviewReady/system-design-resources)
 
 [Low Level Design](https://github.com/ashishps1/awesome-low-level-design)
-
-Time Management - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
 
 ## Case Studies
 
