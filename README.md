@@ -1,6 +1,6 @@
 # System design
 
-Guide on How to answer questions - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
+[Guide on How to answer questions](https://github.com/shreesha21/Interview-Prep/blob/main/guide.md) - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
 
 [Cheatsheet](https://gist.github.com/vasanthk/485d1c25737e8e72759f)
 
