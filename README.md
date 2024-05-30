@@ -2,7 +2,7 @@
 
 [Guide on How to answer questions](https://github.com/shreesha21/Interview-Prep/blob/main/guide.md) - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
 
-[Ultimate Crash course](https://lnkd.in/gzsFa_nk)
+[Ultimate Crash course](https://levelup.gitconnected.com/system-design-interview-questions-the-ultimate-crash-course-d1f17da93faa)
 
 [Cheatsheet](https://gist.github.com/vasanthk/485d1c25737e8e72759f)
 
