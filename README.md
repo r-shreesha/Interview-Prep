@@ -2,6 +2,8 @@
 
 [Guide on How to answer questions](https://github.com/shreesha21/Interview-Prep/blob/main/guide.md) - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
 
+[Ultimate Crash course](https://lnkd.in/gzsFa_nk)
+
 [Cheatsheet](https://gist.github.com/vasanthk/485d1c25737e8e72759f)
 
 [Brushup concepts](https://github.com/karanpratapsingh/system-design)
