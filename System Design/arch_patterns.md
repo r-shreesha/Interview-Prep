@@ -1,4 +1,4 @@
-# System Architectural Patterns
+# Software Architectural Patterns
 
 All the characteristics, types, Use case scenarios, Pros, Cons are detailed [here](https://www.simform.com/blog/software-architecture-patterns/)
 
