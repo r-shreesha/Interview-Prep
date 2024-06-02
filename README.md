@@ -104,4 +104,4 @@
 
 Blog: https://www.simform.com/blog/software-architecture-patterns/
 
-![image](https://github.com/shreesha21/system-design-interview/blob/main/uid_gen.md)
+![image](https://github.com/r-shreesha/Interview-Prep/blob/main/Design%20Diagrams/Software%20Architecture%20Patterns.gif)
