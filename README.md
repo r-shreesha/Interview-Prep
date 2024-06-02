@@ -99,3 +99,9 @@
 | Trie               | - [Link](https://lnkd.in/ezMcbZKX)                                                                                                                                                                                                  |
 | Combination        | - [Link](https://lnkd.in/eRsFVm64)                                                                                                                                                                                                  |
 | Backtracking       | - [Link 1](https://lnkd.in/e7c6XbdG) <br/> - [Link 2](https://lnkd.in/eGyS6q3R) <br/> - [Link 3](https://lnkd.in/eTZDncpG)                                                                                                        |
+
+# Software Architecture Patterns
+
+Blog: https://www.simform.com/blog/software-architecture-patterns/
+
+![image](https://github.com/shreesha21/system-design-interview/blob/main/uid_gen.md)
