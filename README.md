@@ -23,4 +23,4 @@
 
 [Software Architecture Patterns](https://github.com/r-shreesha/Interview-Prep/blob/main/System%20Design/arch_patterns.md)
 
-[API Architecture Styles]() 
+[API Architecture Styles](https://github.com/r-shreesha/Interview-Prep/blob/main/Design%20Diagrams/API%20Architectural%20Styles.gif) 
