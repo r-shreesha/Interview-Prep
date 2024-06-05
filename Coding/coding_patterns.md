@@ -43,11 +43,11 @@ Check out the Software Design Patterns tutorial [here](https://www.geeksforgeeks
 
    The Singleton method or Singleton Design pattern is one of the simplest design patterns. It ensures a class only has one instance, and provides a global point of access to it.
    
-➤ [Builder Pattern](https://www.geeksforgeeks.org/builder-design-pattern): [Implementation](https://www.geeksforgeeks.org/builder-pattern-c-design-patterns):
+➤ [Builder Pattern](https://www.geeksforgeeks.org/builder-design-pattern): [Implementation](https://www.geeksforgeeks.org/builder-pattern-c-design-patterns)
 
    Builder pattern aims to “Separate the construction of a complex object from its representation so that the same construction process can create different representations.” It is used to     construct a complex object step by step and the final step will return the object.
    
-➤ [Prototype Pattern](https://www.geeksforgeeks.org/prototype-design-pattern): [Implementation](https://www.geeksforgeeks.org/prototype-pattern-c-design-patterns):
+➤ [Prototype Pattern](https://www.geeksforgeeks.org/prototype-design-pattern): [Implementation](https://www.geeksforgeeks.org/prototype-pattern-c-design-patterns)
 
    Prototype allows us to hide the complexity of making new instances from the client. The concept is to copy an existing object rather than creating a new instance from scratch, something     that may include costly operations. The existing object acts as a prototype and contains the state of the object.
    
@@ -67,7 +67,7 @@ Check out the Software Design Patterns tutorial [here](https://www.geeksforgeeks
 
 ➤ [Facade Pattern](https://www.geeksforgeeks.org/facade-design-pattern-introduction): [Implementation](https://www.geeksforgeeks.org/facade-method-c-design-patterns)
 
-    Facade Method Design Pattern provides a unified interface to a set of interfaces in a subsystem. Facade defines a high-level interface that makes the subsystem easier to use.
+   Facade Method Design Pattern provides a unified interface to a set of interfaces in a subsystem. Facade defines a high-level interface that makes the subsystem easier to use.
 
 ## Behavioral
 
