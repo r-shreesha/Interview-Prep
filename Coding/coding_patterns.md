@@ -26,7 +26,9 @@
 There are three types of Design Patterns:
 
 ➤ Creational Design Pattern
+
 ➤ Structural Design Pattern
+
 ➤ Behavioral Design Pattern
 
 Check out the Software Design Patterns tutorial [here](https://www.geeksforgeeks.org/software-design-patterns/)
