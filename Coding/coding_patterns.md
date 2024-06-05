@@ -83,7 +83,7 @@ Check out the Software Design Patterns tutorial [here](https://www.geeksforgeeks
 
    The Strategy Design Pattern allows the behavior of an object to be selected at runtime. It is one of the Gang of Four (GoF) design patterns, which are widely used in object-oriented         programming. The Strategy pattern is based on the idea of encapsulating a family of algorithms into separate classes that implement a common interface.
  
-➤ Data Structures
+# Data Structures
 
 1. Design Dynamic Array (Resizable Array): https://lnkd.in/gydhM-Cy
 2. Design Singly Linked List: https://lnkd.in/gDMR_EGP
@@ -95,13 +95,13 @@ Check out the Software Design Patterns tutorial [here](https://www.geeksforgeeks
 8. Design Disjoint Set (Union-Find): https://lnkd.in/gpqc-hps
 9. Design Segment Tree: https://lnkd.in/gBZUKiVn
 
-➤ Sorting
+# Sorting
 
 1. Insertion Sort: https://lnkd.in/gW7zWpyq
 2. Merge Sort: https://lnkd.in/gHD6KS8e
 3. Quick Sort: https://lnkd.in/gnUP6qRh
 
-➤ Algorithms
+# Algorithms
 
 1. Matrix Depth-First Search: https://lnkd.in/gvTZKSGy
 2. Matrix Breadth-First Search: https://lnkd.in/g-T2Rh_E
@@ -110,7 +110,7 @@ Check out the Software Design Patterns tutorial [here](https://www.geeksforgeeks
 5. Kruskal's Algorithm: https://lnkd.in/gfEMwsmp
 6. Topological Sort: https://lnkd.in/gW8hV4Mv
 
-➤Knapsack Problems
+# Knapsack Problems
 
 1. 0/1 Knapsack: https://lnkd.in/gYuw8-8c
 2. Unbounded Knapsack: https://lnkd.in/gxzTRwcD
