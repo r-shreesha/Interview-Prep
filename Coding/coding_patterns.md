@@ -1,3 +1,40 @@
+➤ Coding Interview Patterns
+
+✅ Dynamic Programming Patterns: https://lnkd.in/gVNgiDWH
+
+✅ Tree Patterns: https://lnkd.in/gYB7zUX6
+
+✅ Graph Patterns: https://lnkd.in/geZGw4Vt
+
+✅ Substring Problem Patterns: https://lnkd.in/gt23kRen
+
+✅ Backtracking Problem Pattern: https://lnkd.in/gk6JqQD4
+
+✅Two Pointers Patterns: https://lnkd.in/gfea3T9v
+
+✅ Binary Search Patterns: https://lnkd.in/gHhq5MrR
+
+✅ Cloning Problems Patterns: https://lnkd.in/gJWqTDV8
+
+✅ Bit Manipulation Pattern: https://lnkd.in/gE6cdc-g
+
+✅ Heap Patterns: https://lnkd.in/gugVTJsT
+
+✅ Sliding Window Patterns: https://lnkd.in/gb5NeskQ
+
+➤ Design Patterns
+
+1. Factory Method Pattern: https://lnkd.in/gVdbjDde
+2. Singleton Pattern: https://lnkd.in/g4s9BATS
+3. Builder Pattern: https://lnkd.in/gZ8x9dSp
+4. Prototype Pattern: https://lnkd.in/gWh4RRrF
+5. Adapter Pattern: https://lnkd.in/gyfV4AaC
+6. Decorator Pattern: https://lnkd.in/gweBCebF
+7. Facade Pattern: https://lnkd.in/gYY5EMB8
+8. Strategy Pattern: https://lnkd.in/gu_JP9jX
+9. Observer Pattern: https://lnkd.in/gSdpMFNE
+10. State Pattern: https://lnkd.in/gFnzkT7y
+
 ➤ Data Structures
 
 1. Design Dynamic Array (Resizable Array): https://lnkd.in/gydhM-Cy
@@ -30,15 +67,3 @@
 1. 0/1 Knapsack: https://lnkd.in/gYuw8-8c
 2. Unbounded Knapsack: https://lnkd.in/gxzTRwcD
 
-➤ Design Patterns
-
-1. Factory Method Pattern: https://lnkd.in/gVdbjDde
-2. Singleton Pattern: https://lnkd.in/g4s9BATS
-3. Builder Pattern: https://lnkd.in/gZ8x9dSp
-4. Prototype Pattern: https://lnkd.in/gWh4RRrF
-5. Adapter Pattern: https://lnkd.in/gyfV4AaC
-6. Decorator Pattern: https://lnkd.in/gweBCebF
-7. Facade Pattern: https://lnkd.in/gYY5EMB8
-8. Strategy Pattern: https://lnkd.in/gu_JP9jX
-9. Observer Pattern: https://lnkd.in/gSdpMFNE
-10. State Pattern: https://lnkd.in/gFnzkT7y
