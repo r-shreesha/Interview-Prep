@@ -5,6 +5,8 @@
 
 # System design
 
+## Resources
+
 [Most Common System Design Questions](https://github.com/r-shreesha/Interview-Prep/blob/main/FAQ.md)
 
 [Guide on How to answer questions](https://github.com/shreesha21/Interview-Prep/blob/main/guide.md) - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
@@ -19,8 +21,12 @@
 
 [Low Level Design](https://github.com/ashishps1/awesome-low-level-design)
 
+## Concepts
+
 [How to Scale a system from 0 to 1 Million users](https://github.com/shreesha21/system-design-interview/blob/main/Scaling%20to%201M%20users.md)
 
 [Software Architecture Patterns](https://github.com/r-shreesha/Interview-Prep/blob/main/System%20Design/arch_patterns.md)
 
 [API Architecture Styles](https://github.com/r-shreesha/Interview-Prep/blob/main/Design%20Diagrams/API%20Architectural%20Styles.gif) 
+
+[Rest vs GraphQL]()
