@@ -38,4 +38,4 @@ Use these questions as a starting point for your analysis. Take the time to inve
 
 It's important to invest as much time in this decision as needed. Choosing the wrong database type can be detrimental to your application’s performance, and difficult to reverse.
 
-![image](/workspaces/Interview-Prep/Design Diagrams/Database_Types.jpeg)
+![image](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Diagrams/Database_Types.jpeg)

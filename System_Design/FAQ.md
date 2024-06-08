@@ -24,16 +24,16 @@
 
 * Design a ride sharing service like Uber/Lyft - [Video](https://www.youtube.com/watch?v=umWABit-wbk)
 
-* [Design a Key Value Store](https://github.com/shreesha21/system-design-interview/blob/main/KV%20Store.md) - [Video](https://www.youtube.com/watch?v=rnZmdmlR-2M)
+* [Design a Key Value Store](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/KV_Store.md) - [Video](https://www.youtube.com/watch?v=rnZmdmlR-2M)
 
 * Design a Scalable Logging and Monitoring System - [Video](https://www.youtube.com/watch?v=kIcq1_pBQSY)
 
 
 # Part 2
 
-* [Design a UID Generator](https://github.com/shreesha21/system-design-interview/blob/main/uid_gen.md)
+* [Design a UID Generator](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/uid_gen.md)
 
-* [Design a S3 Object Storage](https://github.com/shreesha21/system-design-interview/blob/main/s3.md) - [Video](https://www.youtube.com/watch?v=UmWtcgC96X8)
+* [Design a S3 Object Storage](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/s3.md) - [Video](https://www.youtube.com/watch?v=UmWtcgC96X8)
 
 * Design a Distributed Message Queue like Kafka - [Video](https://www.youtube.com/watch?v=iJLL-KPqBpM)
 

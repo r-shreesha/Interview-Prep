@@ -1,15 +1,15 @@
 # Coding
 
 - [Topics](https://github.com/r-shreesha/Interview-Prep/blob/main/Coding/topic.md)
-- [Practice](https://github.com/r-shreesha/Interview-Prep/blob/main/Coding/patterns.md)
+- [Practice](https://github.com/r-shreesha/Interview-Prep/blob/main/Coding/coding_patterns.md)
 
 # System design
 
 ## Resources
 
-[Most Common System Design Questions](https://github.com/r-shreesha/Interview-Prep/blob/main/FAQ.md)
+[Most Common System Design Questions](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/FAQ.md)
 
-[Guide on How to answer questions](https://github.com/shreesha21/Interview-Prep/blob/main/guide.md) - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
+[Guide on How to answer questions](https://github.com/shreesha21/Interview-Prep/blob/main/System_Design/guide.md) - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
 
 [Ultimate Crash course](https://levelup.gitconnected.com/system-design-interview-questions-the-ultimate-crash-course-d1f17da93faa)
 
@@ -23,12 +23,12 @@
 
 ## Concepts
 
-[How to Scale a system from 0 to 1 Million users](https://github.com/shreesha21/system-design-interview/blob/main/Scaling%20to%201M%20users.md)
+[How to Scale a system from 0 to 1 Million users](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Concepts/Scaling_to_1M_users.md)
 
-[Software Architecture Patterns](https://github.com/r-shreesha/Interview-Prep/blob/main/System%20Design/arch_patterns.md)
+[Software Architecture Patterns](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/arch_patterns.md)
 
-[API Architecture Styles](https://github.com/r-shreesha/Interview-Prep/blob/main/Design%20Diagrams/API%20Architectural%20Styles.gif) 
+[API Architecture Styles](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Diagrams/API%20Architectural%20Styles.gif) 
 
-[Rest vs GraphQL](https://github.com/r-shreesha/Interview-Prep/blob/main/Design%20Concepts/Rest_GraphQL.md)
+[Rest vs GraphQL](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Concepts/Rest_GraphQL.md)
 
-[How to Identify the right database]((https://github.com/r-shreesha/Interview-Prep/blob/main/Design%20Concepts/Rest_GraphQL.md))
+[How to Identify the right database](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Concepts/Identify_right_db.md)
