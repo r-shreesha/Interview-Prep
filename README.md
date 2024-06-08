@@ -30,3 +30,5 @@
 [API Architecture Styles](https://github.com/r-shreesha/Interview-Prep/blob/main/Design%20Diagrams/API%20Architectural%20Styles.gif) 
 
 [Rest vs GraphQL](https://github.com/r-shreesha/Interview-Prep/blob/main/Design%20Concepts/Rest_GraphQL.md)
+
+[How to Identify the right database]((https://github.com/r-shreesha/Interview-Prep/blob/main/Design%20Concepts/Rest_GraphQL.md))
