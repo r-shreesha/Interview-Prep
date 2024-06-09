@@ -60,4 +60,4 @@ GraphQL's schema can be extended over time without breaking existing clients, pr
 
 4. REST offers a simpler structure. GraphQL is more powerful but comes with a steeper learning curve.
 
-![image](https://github.com/r-shreesha/Interview-Prep/blob/main/Design%20Diagrams/Rest%20vs%20GraphQL.gif)
+![image](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Diagrams/Rest%20vs%20GraphQL.gif)
