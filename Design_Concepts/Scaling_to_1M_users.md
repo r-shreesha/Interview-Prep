@@ -59,17 +59,17 @@ You shouldn’t implement premature optimizations or attempt to scale your app b
 
 Implementing scaling solutions introduces complexities, including:
 
-New features take longer to develop
+* New features take longer to develop
 
-The system becomes more complex with more pieces and variables involved
+* The system becomes more complex with more pieces and variables involved
 
-Code can be more difficult to test
+* Code can be more difficult to test
 
-Finding and resolving bugs becomes harder
+* Finding and resolving bugs becomes harder
 
 You should only accept these trade-offs if your app is reaching capacity. Keep the system simple, don’t introduce scaling complexities unless it’s warranted.
 
-Finding Bottlenecks Using Metrics
+## Finding Bottlenecks Using Metrics
 To scale effectively, first, identify your bottlenecks.
 
 Time to check your resource monitoring system or create one if you haven’t already.
