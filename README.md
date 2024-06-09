@@ -23,7 +23,11 @@
 
 ## Concepts
 
+[System Design Algorithms Every Engineer should know](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Concepts/MustKnowSystemDesignAlgos)
+
 [How to Scale a system from 0 to 1 Million users](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Concepts/Scaling_to_1M_users.md)
+
+[How to Identify the right database for a system](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Concepts/Identify_right_db.md)
 
 [Software Architecture Patterns](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/arch_patterns.md)
 
@@ -31,4 +35,4 @@
 
 [Rest vs GraphQL](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Concepts/Rest_GraphQL.md)
 
-[How to Identify the right database](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Concepts/Identify_right_db.md)
+
