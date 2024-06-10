@@ -1,0 +1,121 @@
+# What is Object Storage
+
+- In comparison to file and block storage, Object storage is new. It makes a very deliberate tradeoff to `sacrifice performance` for `high durability, vast scale and low cost`.
+- Object Storage targets "cold" data and is mainly used for archival and backup.
+- Object Storage stores all data as objects in a `flat` structure. There is no hierarchical directory structure.
+- Data access is normally provided via a RESTful API. It is relatively slow compared to other storage types.
+- Ensures `Strong Consistency` similar to block and file storage
+
+## Comparison
+
+| | Block Storage | File Storage | Object Storage |
+| --- | --- | --- | --- |
+| Cost | High | Medium to High | Low |
+| Performance | Medium to very High | Medium to High | Low to medium |
+| Data Access | iSCSI/FC protocols | Standard file access, CIFS/SMB, NFS | RESTful API |
+| Scalability | Medium | High | Vast |
+| Good for | VM, High Performance Apps like DB | General purpose file system access | Binary data, unstructured data, video, images |
+| Mutable Content | Y | Y | N (object versioning is supported, in place update is not) |
+
+## Terminology
+
+- **Bucket**. A logical container for objects. The bucket name is globally unique.
+- **Object**. An object is an individual piece of data we store in a bucket. It contains object data(also called payload) and metadata.
+  * Object data. can be any sequence of data we need to store.
+  * Metadata. Set of name-value pairs that describe the object.
+- **Versioning**. A feature that keeps multiple variants of an object in the same bucket. This is enabled at bucket level. This enables users to recover objects that are deleted or overwritten accidentally
+- **Uniform Resouce Identifier (URI)**. Object storage provides RESTful APIs to access its resources - buckets and objects. Each resource is uniquely identified by its URI
+- **Service Level Agreement(SLA)**. This is a contract between service provider adn a client. Example, S3 Standard Infrequent Access storage class provides the following SLA:
+    * Designed for durability of 99.999999999% of objects across multiple Availability zones.
+    * Data is resilient in the event of one entire Availability Zone destruction.
+  
+
+# Understanding Requirements
+C: What features should be included in the design?
+
+I: Create Buckets, List Buckets, Object uploading, Object download, Object Versioning, Listing objects within a bucket, similar to `aws s3 ls`
+
+C: What is the typical data size?
+
+I: We need to store massive objects(few GBs) and a number of small objects(tens of KBs) efficiently
+
+C: How much data do we need to store in one year?
+
+I: 100 petabytes (PB)
+
+C: What are some of the non-functional requirements we need?
+
+I: Data durability is 6 nines, Service availability is 4 nines, 100PB of data, Storage Efficiency. Reduce Storage costs while maintaining high degree of reliability and performance
+
+## Estimation
+
+Disk Capacity: Let's assume 20% small objects(< 1MB), 60% medium sized objects (1MB - 64MB), 20% large objects (> 64MB)
+
+IOPS: 1 hard disk(7200 rpm) is capable of doing 100 ~ 150 random seeks per second (100 ~ 150 IOPS)
+
+With this assumption, 40% usage ratio implies 0.68 billion objects. If each metadata is 1KB in size, we need 0.68TB space to store them.
+
+# High Level Design
+![image](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Diagrams/S3_HLD.png)
+
+**Load Balancer** - Distributes RESTful API across a number of API servers
+
+**API Service** - Orchestrates RPCs to the IAM service, Metadata service, Storage stores. This service is *stateless* so it can be horizontally scaled
+
+**IAM** - Central place to handle AAA(Authn, Authz, Access Control).
+
+**Data store** - Stores and retrieves actual data. All data-related operations are based on object ID(UUID)
+
+**Metadata store** - Stores metadata of the objects.
+
+In Ceph, there is no metadata store. All are persisted as one or multiple Rados objects.
+
+## Uploading an object
+
+Let's walk through an example of creating a bucket named `bucket-to-share` and then upload a file named `script.txt` to the bucket.
+
+1. Client sends HTTP PUT request to create a bucket named `bucket-to-share`. The request is forwarded to API service
+2. The API service calls the IAM to ensure the user is authorized and has WRITE permission
+3. The API service calls metadata store to create an entry with the bucket info in the metadata database. Once the entry is created, a success message is returned to the client.
+4. After the bucket is created, client sends HTTP PUT request to create an object named `script.txt`
+5. The API service verifies user's permission and ensures the user has the WRITE permission on the bucket.
+6. Once validation succeeds, the API service sends the object data in the HTTP PUT payload to the data store. The data store persists the payload as an object and returns the UUID of the object.
+7. The API service calls the metadata store to create a new entry in the metadata database. It contains important metadata such as the `object_id`(UUID), `bucket_id`, `object_name`, etc.
+
+| object_name | object_id | bucket_id |
+| --- | --- | --- |
+| script.txt | a2eb7b9a-2fdd-49b5-8c8d-7cce462de8f7 | 39d42efd-4f1d-468d-9dd6-1b3a046cc827 | 
+
+## Downloading an object
+
+As the datastore doesn't store the name of the object, we should first get the mapping of the `object_id` for the given `object_name`.
+1. Client sends an HTTP GET request to the load balancer: `GET /bucket-to-share/script.txt`
+2. The API service queries the IAM to verify that the user has READ access to the bucket.
+3. Once validated, the API service fetches the corresponding object's UUID from the metadata store.
+4. Next, the API service fetches the object data from the data store by its UUID.
+5. The API service returns the object data to the client in HTTP GET response.
+
+# Design Deep Dive
+
+We deep dive into a few areas:
+
+* Data store
+* Metadata data model
+* Listing objects in a bucket
+* Object versioning
+* Optimizing uploads of large files
+* Garbage collection
+
+## Data store
+
+## Metadata Data model
+
+## Listing Objects in a bucket
+
+## Object Versioning
+
+## Optimizing uploads of large files
+
+## Garbage collection
+
+# Wrap Up
