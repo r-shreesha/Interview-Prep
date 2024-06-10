@@ -107,8 +107,62 @@ We deep dive into a few areas:
 * Garbage collection
 
 ## Data store
+![image](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/S3/Data_Store_Upload.jpg)
+
+### High level design of data store
+![image](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/S3/DataStoreComponents.jpg)
+
+#### Data Routing Service
+
+#### Placement Service
+#### Data Node
+#### Data Persistence Flow
+#### How data is organized
+#### Object Lookup
+#### Updated Data Persistence Flow
+#### Durability - Replication vs Erasure Coding
+#### Correctness Verification
+
 
 ## Metadata Data model
+
+### Schema
+The schema need to support 3 queries essentially
+Q1: Find the object ID by object name
+Q2: Insert/Delete an object based on the object name
+Q3: List objects in a bucket sharing the same prefix
+
+| Bucket |
+| --- |
+|bucket_name|
+|bucket_id|
+|owner_id|
+|enable_versioning|
+
+| Object |
+| --- |
+|bucket_name|
+|object_name|
+|object_version|
+|object_id|
+
+
+### Scaling the bucket table
+
+Usually there is a limit on the number of buckets user can create. If 1M users are allowed to create 10 buckets and if each record takes 1KB, we need 10GB of storage space. Any modern database server can accommodate this.
+
+However, a single database server might not have enough CPU or network bandwidth to handle all the read requests. So we can spread the read load among multiple database replicas.
+
+### Scaling the object table
+
+The object table holds object metadata. The dataset at our design scale will likely not fit in a single database instance. We can scale the object table by `Sharding`.
+
+If we shard by `bucket_id`, each shard will have all the objects belonging to the same bucket. However, we can have hotspot shards as bucket might contain billions of objects.
+
+If we shard by `object_id`, it evenly distributes the load. However, we will not be able to execute Q1 and Q2 efficiently as they are based on object URI.
+
+We choose to shard by a combination of `bucket_name` and `object_name`. This is because metadata operations are based on object URI. For example, finding object ID by URI, uploading an object via URI. etc
+To evenly distribute the data, we can use the hash of `<bucket_name, object_name>` as the sharding key.
 
 ## Listing Objects in a bucket
 
