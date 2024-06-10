@@ -33,7 +33,7 @@
 
 * [Design a UID Generator](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/uid_gen.md)
 
-* [Design a S3 Object Storage](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/s3.md) - [Video](https://www.youtube.com/watch?v=UmWtcgC96X8)
+* [Design a S3 Object Storage](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/S3/README.md) - [Video](https://www.youtube.com/watch?v=UmWtcgC96X8)
 
 * Design a Distributed Message Queue like Kafka - [Video](https://www.youtube.com/watch?v=iJLL-KPqBpM)
 
