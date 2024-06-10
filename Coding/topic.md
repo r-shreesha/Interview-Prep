@@ -1,4 +1,6 @@
 
+[20 coding patterns to master](https://www.linkedin.com/posts/tauseeffayyaz_20-coding-patterns-to-master-coding-interviews-activity-7205804147680415744-IdTv?utm_source=share&utm_medium=member_desktop)
+
 | Topic              | Links                                                                                                                                                                                                                              |
 |--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Sliding Window     | - [Link 1](https://lnkd.in/ePckKMNi) <br/> - [Link 2](https://lnkd.in/e7vBRUrc) <br/> - [Link 3](https://lnkd.in/eSUh6xJP) <br/> - [Link 4](https://lnkd.in/eMFFuHrn) <br/> - [Link 5](https://lnkd.in/eeUFSJ8c)                        |
@@ -16,6 +18,8 @@
 | Trie               | - [Link](https://lnkd.in/ezMcbZKX)                                                                                                                                                                                                  |
 | Combination        | - [Link](https://lnkd.in/eRsFVm64)                                                                                                                                                                                                  |
 | Backtracking       | - [Link 1](https://lnkd.in/e7c6XbdG) <br/> - [Link 2](https://lnkd.in/eGyS6q3R) <br/> - [Link 3](https://lnkd.in/eTZDncpG)                                                                                                        |
+
+
 
 # Practice
 
