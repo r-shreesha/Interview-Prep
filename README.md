@@ -4,6 +4,16 @@
 - [Practice](https://github.com/r-shreesha/Interview-Prep/blob/main/Coding/coding_patterns.md)
 
 # System design
+## Key Characteristics of a Distributed System
+| Key | Strategies |
+|---|---|
+| Scalability | Horizontal, Vertical|
+| Availability | Redundancy & Replication, Load Balancing, Distributed Data Storage, Health Monitoring & Alerts, Regular System Maintenance & Updates, Geographic Distribution | 
+| Latency & Performance | Data Locality, Load Balancing, Caching |
+| Monitoring & Observability | Metrics Collection, Distributed Tracing, Logging, Alerting & Anomaly Detection, Visualization & Dashboards |
+| Resiliencey & Error handling | Fault Tolerance, Graceful Degradation (Circuit Breakers, Timeouts, Fallbacks), Retry & Backoff, Logging errors & Generating Alerts, Chaos Engineering |
+
+
 
 ## Resources
 
