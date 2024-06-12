@@ -80,8 +80,11 @@ With eventual consistency approach, we need to have an inconsistency resolution,
 #### Inconsistency resolution: Versioning/Vector Clock
 
 Versioning: Treating each data modification as a new immutable version of data.
+
 Vector Clock: `[server, version]` pair associated with a data item. 
+
 Vector clock is represented as `D([S1, v1], [S2, v2],...,[Sn, vn])`. Here `D` is a data item, `v1` is a version counter, `s1` is a server number. 
+
 If data item `D` is written to server `Si`, the system must perform one of the following tasks:
 - Increment vi if `[Si,vi]` exists.
 - Otherwise, create a new entry `[Si,1]`
@@ -115,10 +118,13 @@ Usually it requires two independent sources of information to mark a server down
 #### 2. Handling Temporary Failures - Sloppy Quorum - Hinted Handoff
 
 System needs to deploy certain mechanisms to ensure availability after detecting failures through the Gossip protocol
+
 A technique called `"Sloppy Quorum"` can be used to improve availability.
+
 System chooses the first W healthy servers for writes and first R healthy servers on the hash ring. Offline servers are ignored.
+
 If a server is unavailable due to network or server failures, another server will process requests temporarily. When the down server comes back up, changes will be pushed back to achieve data consistency. 
-This process is callled `hinted handoff`. 
+This process is called `hinted handoff`. 
 
 #### 3. Handling Permanent Failures - Merkle Tree
 
@@ -127,9 +133,11 @@ If a replica goes completely unavailable, we implement an anti-entropy protocol 
 A `merkle tree` is used for inconsistency detection and minimizing the amount of data transferred.
 
 A hash tree or Merkle tree is a tree in which every non-leaf node is labeled with the has of the labels or values(in case of leaves) of its child nodes. 
+
 Hash trees allow efficient and secure verification of the contents of large data structres.
 
 Using Merkle trees, the data needed to be synchronized is proportional to the differences between the two replicas and not the amount of data they contain. 
+
 In real-world systems, the bucket size is quite big. Eg: 1M buckets per 1B keys, so each bucket contains 1000 keys.
 
 #### DC outage
