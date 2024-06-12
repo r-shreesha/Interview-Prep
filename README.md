@@ -8,10 +8,10 @@
 | Key | Strategies |
 |---|---|
 | Scalability | Horizontal, Vertical|
-| Availability | Redundancy & Replication, Load Balancing, Distributed Data Storage, Health Monitoring & Alerts, Regular System Maintenance & Updates, Geographic Distribution | 
+| Availability | * Redundancy & Replication <br/> * Load Balancing <br/> * Distributed Data Storage <br/> * Health Monitoring & Alerts <br/> * Regular System Maintenance & Updates <br/> * Geographic Distribution | 
 | Latency & Performance | Data Locality, Load Balancing, Caching |
-| Monitoring & Observability | Metrics Collection, Distributed Tracing, Logging, Alerting & Anomaly Detection, Visualization & Dashboards |
-| Resiliencey & Error handling | Fault Tolerance, Graceful Degradation (Circuit Breakers, Timeouts, Fallbacks), Retry & Backoff, Logging errors & Generating Alerts, Chaos Engineering |
+| Monitoring & Observability | * Metrics Collection <br/> * Distributed Tracing <br/> * Logging <br/> * Alerting & Anomaly Detection <br/> * Visualization & Dashboards |
+| Resiliencey & Error handling | * Fault Tolerance <br/> * Graceful Degradation (Circuit Breakers, Timeouts, Fallbacks) <br/> * Retry & Backoff <br/> * Logging errors & Generating Alerts <br/> * Chaos Engineering |
 
 
 
