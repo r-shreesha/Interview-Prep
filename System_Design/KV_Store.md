@@ -130,7 +130,7 @@ This process is called `hinted handoff`.
 
 If a replica goes completely unavailable, we implement an anti-entropy protocol to keep replicas in sync. Anti-entropy involves comparing each piece of data on replicas and updating each replica to the newest version. 
 
-A `merkle tree` is used for inconsistency detection and minimizing the amount of data transferred.
+A `merkle tree` is used for inconsistency detection and minimizing the amount of data to be synchronized or transferred.
 
 A hash tree or Merkle tree is a tree in which every non-leaf node is labeled with the has of the labels or values(in case of leaves) of its child nodes. 
 
