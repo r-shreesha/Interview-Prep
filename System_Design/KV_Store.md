@@ -77,7 +77,7 @@ R = A read quorum - For a read operation to be successful, a read op should wait
 
 With eventual consistency approach, we need to have an inconsistency resolution, like versioning
 
-#### Inconsistency resolution: Versioning/Vector Clock
+### Inconsistency resolution: Versioning/Vector Clock
 
 Versioning: Treating each data modification as a new immutable version of data.
 
@@ -104,9 +104,9 @@ This could lead to inefficiencies in reconciliation as the descendant relationsh
 
 However, Dynamo DB has not yet encountered this problem in production. So it is still an acceptable solution for most companies.
 
-### Handling Failures
+## Handling Failures
 
-#### 1. Failure detection - Gossip Protocol
+### 1. Failure detection - Gossip Protocol
 
 Usually it requires two independent sources of information to mark a server down. Decentralized failure detection methods like Gossip protocol works best.
 - Each node maintains a node-membership list, which contains member IDs and heartbeat counters
@@ -115,7 +115,7 @@ Usually it requires two independent sources of information to mark a server down
 - Once nodes receive heartbeats, membership list is updated to the latest info.
 - If the heartbeat has not increased for more than predefined periods, the member is considered offline.
 
-#### 2. Handling Temporary Failures - Sloppy Quorum - Hinted Handoff
+### 2. Handling Temporary Failures - Sloppy Quorum - Hinted Handoff
 
 System needs to deploy certain mechanisms to ensure availability after detecting failures through the Gossip protocol
 
@@ -126,7 +126,7 @@ System chooses the first W healthy servers for writes and first R healthy server
 If a server is unavailable due to network or server failures, another server will process requests temporarily. When the down server comes back up, changes will be pushed back to achieve data consistency. 
 This process is called `hinted handoff`. 
 
-#### 3. Handling Permanent Failures - Merkle Tree
+### 3. Handling Permanent Failures - Merkle Tree
 
 If a replica goes completely unavailable, we implement an anti-entropy protocol to keep replicas in sync. Anti-entropy involves comparing each piece of data on replicas and updating each replica to the newest version. 
 
@@ -140,7 +140,7 @@ Using Merkle trees, the data needed to be synchronized is proportional to the di
 
 In real-world systems, the bucket size is quite big. Eg: 1M buckets per 1B keys, so each bucket contains 1000 keys.
 
-#### DC outage
+### DC outage
 
 Replicate across multiple data centers. Even if a DC is completely offline, users can still access data through the other data centers.
 
@@ -159,7 +159,7 @@ Replicate across multiple data centers. Even if a DC is completely offline, user
 - SSTables return the result of the data set
 - The result of the data set is returned to the client
 
-### Wrap Up
+## Wrap Up
 
 | Goal/Problems | Technique |
 | --- | --- |
