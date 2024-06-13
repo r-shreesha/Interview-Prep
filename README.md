@@ -24,6 +24,8 @@
 
 [Most Common System Design Questions](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/FAQ.md)
 
+[Designing Data Intensive Applications](https://youtu.be/PdtlXdse7pw?si=85ukmh3bR7yWFFgU)
+
 [Guide on How to answer questions](https://github.com/shreesha21/Interview-Prep/blob/main/System_Design/guide.md) - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
 
 [Ultimate Crash course](https://levelup.gitconnected.com/system-design-interview-questions-the-ultimate-crash-course-d1f17da93faa)
