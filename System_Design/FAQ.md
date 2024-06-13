@@ -2,6 +2,8 @@
 
 * Design a URL Shortener - [Video](https://www.youtube.com/watch?v=fMZMm_0ZhK4)
 
+* Design a High Throughput Logging System- [Video](https://youtu.be/ak1wTYq_opQ?si=n6i5Gl4_6k4dO-jF)
+
 * Design a Social Media platform
   - [Twitter](https://www.youtube.com/watch?v=wYk0xPP_P_8)
   - [Instagram](https://www.youtube.com/watch?v=VJpfO6KdyWE)
