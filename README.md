@@ -52,4 +52,4 @@
 
 [Rest vs GraphQL](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Concepts/Rest_GraphQL.md)
 
-
+![image]()
