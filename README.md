@@ -9,7 +9,7 @@
 - [Practice](https://github.com/r-shreesha/Interview-Prep/blob/main/Coding/coding_patterns.md)
 
 # Behavioral
-- FAQ
+- [FAQ](https://github.com/r-shreesha/Interview-Prep/blob/main/Behavioral/FAQ)
 - Work Scenarios
   
 # System design
