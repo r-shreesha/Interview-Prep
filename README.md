@@ -8,6 +8,10 @@
 - [Topics](https://github.com/r-shreesha/Interview-Prep/blob/main/Coding/topic.md)
 - [Practice](https://github.com/r-shreesha/Interview-Prep/blob/main/Coding/coding_patterns.md)
 
+# Behavioral
+- FAQ
+- Work Scenarios
+  
 # System design
 ## Key Characteristics of a Distributed System
 | Key | Strategies |
