@@ -1,11 +1,11 @@
 # Quick Revision
 
-### Part 1
-1. https://lnkd.in/gfBjpfJC
-2. https://lnkd.in/gmDN3NJH
-3. https://lnkd.in/gGD-h3-3
+### Part 1 - Arrays
+1. Two Sum                          - https://lnkd.in/gfBjpfJC
+2. Maximum Subarray                 - https://lnkd.in/gmDN3NJH
+3. Best time to buy and sell stock  - https://lnkd.in/gGD-h3-3
 
-### Part 2
+### Part 2 - Linked List
 1. https://lnkd.in/g9y-5bRe
 2. https://lnkd.in/gbiPnwyq
 3. https://lnkd.in/gA3ZG9S8
