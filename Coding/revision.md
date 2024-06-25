@@ -1,9 +1,9 @@
 # Quick Revision
 
 ### Part 1 - Arrays
-1. Two Sum                          - https://lnkd.in/gfBjpfJC
-2. Maximum Subarray                 - https://lnkd.in/gmDN3NJH
-3. Best time to buy and sell stock  - https://lnkd.in/gGD-h3-3
+1. https://leetcode.com/problems/two-sum
+2. https://leetcode.com/problems/maximum-subarray
+3. https://leetcode.com/problems/best-time-to-buy-and-sell-stock
 
 ### Part 2 - Linked List
 1. https://lnkd.in/g9y-5bRe
