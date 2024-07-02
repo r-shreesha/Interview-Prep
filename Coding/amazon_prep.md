@@ -701,7 +701,7 @@ public:
 };
 ```
 
-// Implement LRU Cache
+### Implement LRU Cache
 ```cpp
 class LRUCache {
     int capacity;
@@ -760,7 +760,7 @@ public:
 };
 ```
 
-## Median of Two Sorted Arrays
+### Median of Two Sorted Arrays
 ```cpp
 double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
     int m = nums1.size(), n = nums2.size();
