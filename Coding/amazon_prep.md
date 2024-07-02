@@ -4,7 +4,7 @@ Preparing for an Amazon loop interview involves a deep dive into coding, system 
 For this round, focus on fundamental data structures and algorithms. Practice problems on arrays, strings, linked lists, trees, graphs, sorting, searching, and dynamic programming.
 
 ### Two Sum
-```
+```cpp
 vector<int> twoSum(vector<int>& nums, int target) {
     unordered_map<int, int> map;
     for (int i = 0; i < nums.size(); i++) {
@@ -19,7 +19,7 @@ vector<int> twoSum(vector<int>& nums, int target) {
 ```
 
 ### Reverse Linked List
-```
+```cpp
 ListNode* reverseList(ListNode* head) {
     ListNode* prev = nullptr;
     while (head) {
@@ -33,7 +33,7 @@ ListNode* reverseList(ListNode* head) {
 ```
 
 ### Valid Parentheses
-```
+```cpp
 bool isValid(string s) {
     stack<char> stack;
     unordered_map<char, char> map = {{')', '('}, {'}', '{'}, {']', '['}};
@@ -50,7 +50,7 @@ bool isValid(string s) {
 ```
 
 ### Merge Intervals
-```
+```cpp
 vector<vector<int>> merge(vector<vector<int>>& intervals) {
     if (intervals.empty()) return {};
     sort(intervals.begin(), intervals.end());
@@ -68,7 +68,7 @@ vector<vector<int>> merge(vector<vector<int>>& intervals) {
 ```
 
 ### Binary Tree Level Order Traversal
-```
+```cpp
 vector<vector<int>> levelOrder(TreeNode* root) {
     vector<vector<int>> result;
     if (!root) return result;
@@ -91,7 +91,7 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 ```
 
 ### Longest Substring Without Repeating Characters
-```
+```cpp
 int lengthOfLongestSubstring(string s) {
     vector<int> map(256, -1);
     int left = 0, right = 0, maxLength = 0;
@@ -108,7 +108,7 @@ int lengthOfLongestSubstring(string s) {
 ```
 
 ### Find Median from Data Stream
-```
+```cpp
 class MedianFinder {
     priority_queue<int> maxHeap; // Left half
     priority_queue<int, vector<int>, greater<int>> minHeap; // Right half
@@ -131,7 +131,7 @@ public:
 ```
 
 ### Top K Frequent Elements
-```
+```cpp
 vector<int> topKFrequent(vector<int>& nums, int k) {
     unordered_map<int, int> count;
     for (int num : nums) count[num]++;
@@ -147,7 +147,7 @@ vector<int> topKFrequent(vector<int>& nums, int k) {
 ```
 
 ### Word Ladder
-```
+```cpp
 int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
     unordered_set<string> wordSet(wordList.begin(), wordList.end());
     if (!wordSet.count(endWord)) return 0;
@@ -177,7 +177,7 @@ int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
 ```
 
 ### Trapping Rain Water
-```
+```cpp
 int trap(vector<int>& height) {
     int left = 0, right = height.size() - 1, leftMax = 0, rightMax = 0, water = 0;
     while (left < right) {
@@ -205,7 +205,7 @@ int trap(vector<int>& height) {
 Here, focus on writing clean, efficient, and well-structured code. Emphasize code readability, modularity, and proper use of data structures.
 
 ### LRU Cache Implementation
-```
+```cpp
 class LRUCache {
     int capacity;
     list<int> lru;
@@ -236,7 +236,7 @@ public:
 ```
 
 ### Design a Stack with Increment Operation
-```
+```cpp
 class CustomStack {
     vector<int> stack;
     int maxSize;
@@ -266,7 +266,7 @@ public:
 ```
 
 ### Flatten a Nested List Iterator
-```
+```cpp
 class NestedIterator {
     vector<int> list;
     int index = 0;
@@ -297,7 +297,7 @@ public:
 ```
 
 ### Design Hit Counter
-```
+```cpp
 class HitCounter {
     queue<pair<int, int>> hits;
 
@@ -324,7 +324,7 @@ public:
 ```
 
 ### Serialize and Deserialize Binary Tree
-```
+```cpp
 class Codec {
 public:
     string serialize(TreeNode* root) {
@@ -362,7 +362,7 @@ private:
 ```
 
 ### Design a Tic-Tac-Toe
-```
+```cpp
 class TicTacToe {
     vector<int> rows, cols;
     int diag1, diag2, n;
@@ -386,7 +386,7 @@ public:
 ```
 
 ### Design a Phone Directory
-```
+```cpp
 class PhoneDirectory {
     queue<int> available;
     unordered_set<int> used;
@@ -421,7 +421,7 @@ public:
 ```
 
 ### Design Circular Queue
-```
+```cpp
 class MyCircularQueue {
     vector<int> queue;
     int head, tail, size;
@@ -468,7 +468,7 @@ public:
 ```
 
 ### Design a Key-Value Store
-```
+```cpp
 class KeyValueStore {
     unordered_map<string, string> store;
     unordered_map<string, unordered_set<string>> prefixMap;
@@ -493,7 +493,7 @@ public:
 ```
 
 ### Design Rate Limiter
-```
+```cpp
 class RateLimiter {
     unordered_map<string, queue<int>> userRequests;
     int limit, windowSize;
@@ -530,7 +530,7 @@ public:
 This round emphasizes problem-solving skills and the ability to think through complex problems.
 
 ### Word Search
-```
+```cpp
 bool exist(vector<vector<char>>& board, string word) {
     int m = board.size(), n = board[0].size();
     for (int i = 0; i < m; i++) {
@@ -556,7 +556,7 @@ bool dfs(vector<vector<char>>& board, string& word, int i, int j, int k) {
 ```
 
 ### Course Schedule
-```
+```cpp
 bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
     vector<vector<int>> graph(numCourses);
     vector<int> inDegree(numCourses, 0);
@@ -582,7 +582,7 @@ bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
 ```
 
 ### Merge k Sorted Lists
-```
+```cpp
 ListNode* mergeKLists(vector<ListNode*>& lists) {
     auto comp = [](ListNode* a, ListNode* b) { return a->val > b->val; };
     priority_queue<ListNode*, vector<ListNode*>, decltype(comp)> pq(comp);
@@ -602,7 +602,7 @@ ListNode* mergeKLists(vector<ListNode*>& lists) {
 ```
 
 ### Clone Graph
-```
+```cpp
 Node* cloneGraph(Node* node) {
     if (!node) return nullptr;
     unordered_map<Node*, Node*> visited;
@@ -621,7 +621,7 @@ Node* cloneGraphDFS(Node* node, unordered_map<Node*, Node*>& visited) {
 ```
 
 ### Largest Rectangle in Histogram
-```
+```cpp
 int largestRectangleArea(vector<int>& heights) {
     stack<int> s;
     heights.push_back(0);
@@ -640,7 +640,7 @@ int largestRectangleArea(vector<int>& heights) {
 ```
 
 ### Sliding Window Maximum
-```
+```cpp
 vector<int> maxSlidingWindow(vector<int>& nums, int k) {
     deque<int> dq;
     vector<int> result;
@@ -655,7 +655,7 @@ vector<int> maxSlidingWindow(vector<int>& nums, int k) {
 ```
 
 ### Implement Trie (Prefix Tree)
-```
+```cpp
 class Trie {
 private:
     struct TrieNode {
@@ -702,7 +702,7 @@ public:
 ```
 
 // Implement LRU Cache
-```
+```cpp
 class LRUCache {
     int capacity;
     list<pair<int, int>> cache;
@@ -734,7 +734,7 @@ public:
 ```
 
 ### Design Hit Counter
-```
+```cpp
 class HitCounter {
     queue<pair<int, int>> hits;
 
@@ -761,7 +761,7 @@ public:
 ```
 
 ## Median of Two Sorted Arrays
-```
+```cpp
 double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
     int m = nums1.size(), n = nums2.size();
     if (m > n) return findMedianSortedArrays(nums2, nums1);
