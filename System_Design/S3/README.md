@@ -112,17 +112,73 @@ We deep dive into a few areas:
 ### High level design of data store
 ![image](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/S3/DataStoreComponents.jpg)
 
-#### Data Routing Service
+#### Data Routing Service (DRS)
+- Query placement service to get the best data to store data
+- Read data from data nodes and return it to API service
+- Write data to data nodes
 
 #### Placement Service
+Placement service determines which data nodes(Primary and replicas) should be chosen to store an object.
+- Given a UUID, return its replication group to the data routing service while reading the object
+- Given a UUID, return the primary data node to DRS so that it can contact directly for the data writes.
+- Get periodic heartbeats from these data nodes.
+- Maintain virtual cluster map (physical topology of the cluster) with location information for each data nodes
+- It ensures that the replicas are physically seperated (key for high durability)
+  
 #### Data Node
+- Ensures reliability and durability by replicating data to multiple data nodes, called replication group.
+- Periodically sends heartbeats to the placement server. HB msg contains:
+    - How many disk drives (HDD/SSD) does the data node manager?
+    - How much data is stored in each drive?
+- For the **First Heart Beat**, placement service returns <unique ID of the data node, virtual cluster map, where to replicate data(Replication group)>
+  
 #### Data Persistence Flow
-#### How data is organized
-#### Object Lookup
-#### Updated Data Persistence Flow
-#### Durability - Replication vs Erasure Coding
-#### Correctness Verification
 
+1. API service forwards the object data to the data store
+2. DRS generates UUID for this object and queries placement service for the data node to store this object
+3. Placement service checks the virtual cluster map and returns the primary data node
+4. DRS directly sends the data to the primary data node, together with its UUID.
+5. Primary data node stores the data locally, replicates it among the secondary replicas before sending the response back to DRS.
+6. UUID of the object is returned back to API service.
+
+Step 2. How does placement service looks up the replication group for a given UUID? Consistent hashing.
+
+#### How data is organized
+
+If each object is stored in a stand-alone file, two issues may arise:
+ a) each block would consume 4KB even for very small objects.
+ b) it might exceed system's inode capacity. 
+2. Better option: Merge small objects into a larger file. It works conceptually like a Write Ahead Log. 
+
+When we save an object, it gets written to a `read-write` file. Once the capacity of the file is reached (usually set to few GBs), we mark the file as `read-only` and create a new `read-write` file.
+For this to work, the write access needs to be serialized. This might be a problem in a multi-core system when incoming write requests are coming in parallel, thereby restriting write throughput.
+To fix this we could provide dedicated read-write files, one for each core processing incoming requests.
+
+#### Object Lookup
+The data node needs:
+1. Data file containing the object
+2. The starting offset of the object in the data file
+3. The size of the object
+
+Database schema: 
+(object_mapping: <object_uuid, file_name, start_offset, object_size>)
+To store this information, we could use
+- RocksDB - a file based key-value store. It is based on SSTable, it is fast for writes but slower for reads
+- Relational DB - Fast for reads but slower for writes
+As this is a read heavy system, we could use Relational DB.
+How to deploy this DB? Deploying a single large cluster to support all data nodes could work, but difficult to manage.
+Further these data are specific to the data node.
+We could deploy a **SQLite(file based relational database)** on each node.
+
+
+#### Durability - Replication vs Erasure Coding
+Replicate across different availability zones. 
+Replication is widely adopted in latency-sensitive applications
+Erasure coding offers low storage cost, high durability. But it complicates the data node design.
+
+#### Correctness Verification
+Add the checksum in the read-write file at the end of every object.
+Also, add a checksum of the entire file at the end.
 
 ## Metadata Data model
 
@@ -165,6 +221,10 @@ We choose to shard by a combination of `bucket_name` and `object_name`. This is 
 To evenly distribute the data, we can use the hash of `<bucket_name, object_name>` as the sharding key.
 
 ## Listing Objects in a bucket
+With distributed databases, metadata store needs to run the query in each database, aggregate the results and return to the client.
+It might pose a problem with pagination of the records as each database may contain varying amount of records.
+
+As the performance of this operation can be lowered as a trade off to better scale and high durability, we could denormalize the listing data into a separate table shared by bucket id and use this table for listing objects only. Even with billions of records, this offers acceptable performance.
 
 ## Object Versioning
 
