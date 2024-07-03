@@ -44,8 +44,6 @@
 
 ## Concepts
 
-[System Design Archive]()
-
 [System Design Algorithms Every Engineer should know](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Concepts/MustKnowSystemDesignAlgos)
 
 [How to Scale a system from 0 to 1 Million users](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Concepts/Scaling_to_1M_users.md)
