@@ -1,5 +1,7 @@
 # Framework
 
+[!image](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Diagrams/How_to_answer_Cheat_Sheet.jpeg)
+
 ## 1. Define the problem space - 5 min
   - Ask lots of questions to shrink the scope of the problem from broad and vague to narrow and specific with system constraints
   - Don't jump into design
