@@ -26,21 +26,24 @@
 
 ## Resources
 
+[Guide on How to answer questions](https://github.com/shreesha21/Interview-Prep/blob/main/System_Design/guide.md) - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
+
 [Most Common System Design Questions](https://github.com/r-shreesha/Interview-Prep/blob/main/System_Design/FAQ.md)
+
+[System Design Questions 2.0 by Jordan has no life](https://www.youtube.com/playlist?list=PLjTveVh7FakJOoY6GPZGWHHl4shhDT8iV)
 
 [Designing Data Intensive Applications - Videos](https://youtu.be/PdtlXdse7pw?si=85ukmh3bR7yWFFgU) - [PPT](https://github.com/code-darshan/Designing-Data-Intensive-Application/blob/master/Chapter%201%20Reliable%2C%20Scalable%20and%20Maintainable%20Application.pdf)
 
-[Guide on How to answer questions](https://github.com/shreesha21/Interview-Prep/blob/main/System_Design/guide.md) - [Video](https://youtu.be/L9TfZdODuFQ?si=DfycCVTSLdbzeexO)
+[Low Level Design](https://github.com/ashishps1/awesome-low-level-design)
+
+[Brushup concepts](https://github.com/karanpratapsingh/system-design)
 
 [Ultimate Crash course](https://levelup.gitconnected.com/system-design-interview-questions-the-ultimate-crash-course-d1f17da93faa)
 
 [Cheatsheet](https://gist.github.com/vasanthk/485d1c25737e8e72759f)
 
-[Brushup concepts](https://github.com/karanpratapsingh/system-design)
-
 [InterviewReady - System Design Resources](https://github.com/InterviewReady/system-design-resources)
 
-[Low Level Design](https://github.com/ashishps1/awesome-low-level-design)
 
 ## Concepts
 
