@@ -150,28 +150,34 @@ vector<int> topKFrequent(vector<int>& nums, int k) {
 ```cpp
 int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
     unordered_set<string> wordSet(wordList.begin(), wordList.end());
-    if (!wordSet.count(endWord)) return 0;
-    queue<string> q;
-    q.push(beginWord);
-    int length = 1;
+    if (wordSet.find(endWord) == wordSet.end()) {
+        return 0;
+    }
+
+    queue<pair<string, int>> q;
+    q.push({beginWord, 1});
+
     while (!q.empty()) {
-        int size = q.size();
-        for (int i = 0; i < size; i++) {
-            string word = q.front();
-            q.pop();
-            if (word == endWord) return length;
-            wordSet.erase(word);
-            for (int j = 0; j < word.size(); j++) {
-                char c = word[j];
-                for (int k = 'a'; k <= 'z'; k++) {
-                    word[j] = k;
-                    if (wordSet.count(word)) q.push(word);
+        auto [currentWord, level] = q.front();
+        q.pop();
+
+        if (currentWord == endWord) {
+            return level;
+        }
+
+        for (int i = 0; i < currentWord.size(); ++i) {
+            string temp = currentWord;
+            for (char c = 'a'; c <= 'z'; ++c) {
+                temp[i] = c;
+                if (temp == currentWord) continue;
+                if (wordSet.find(temp) != wordSet.end()) {
+                    q.push({temp, level + 1});
+                    wordSet.erase(temp);
                 }
-                word[j] = c;
             }
         }
-        length++;
     }
+
     return 0;
 }
 ```
