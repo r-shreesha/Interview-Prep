@@ -305,23 +305,22 @@ public:
 ### Design Hit Counter
 ```cpp
 class HitCounter {
-    queue<pair<int, int>> hits;
-
-public:
+    deque<pair<int,int>> q;
+public:   
     void hit(int timestamp) {
-        if (!hits.empty() && hits.back().first == timestamp) {
-            hits.back().second++;
+        if(!q.empty() && q.back().first == timestamp) {
+            q.back().second++;
         } else {
-            hits.push({timestamp, 1});
+            q.push_back({timestamp, 1});
         }
     }
-
+    
     int getHits(int timestamp) {
-        while (!hits.empty() && hits.front().first <= timestamp - 300) {
-            hits.pop();
+        while(!q.empty() && q.front().first <= timestamp - 300) {
+            q.pop_front();
         }
         int count = 0;
-        for (auto& hit : hits) {
+        for(auto &hit: q) {
             count += hit.second;
         }
         return count;
