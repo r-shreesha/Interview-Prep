@@ -26,9 +26,9 @@ Storage: 15B * (100KB of avg page size + 500 bytes of metadata) = 1.5PB. To keep
 7. Go back to step 1
 
 ### How to crawl?
-Usually used: BFS
-If DFS is used, crawler can save some TCP handshaking overhead within a given website.
-Path ascending crawling: http://foo.com/a/b/page.html, it will attempt to crawl /a/b/, /a/, and /.
+* Usually used: BFS
+* If DFS is used, crawler can save some TCP handshaking overhead within a given website.
+* Path ascending crawling: http://foo.com/a/b/page.html, it will attempt to crawl /a/b/, /a/, and /.
 
 A bare minimum crawler needs at least these components:
 1. URL frontier: To store the list of URLs to download and also prioritize which URLs should be crawled first.
@@ -40,8 +40,6 @@ A bare minimum crawler needs at least these components:
 ![image](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Diagrams/WebCrawlerHLD.png)
 
 ## Detailed Design
-
-![image](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Diagrams/WebCrawlerDesign.png)
 
 1. URL frontier: The URL frontier is the data structure that contains all the URLs that remain to be downloaded. Perform BFS from the pages in the seed set.
 Since we have huge list of URLs to crawl, we can distribute our URL frontier into multiple servers with multiple worker threads. 
@@ -75,3 +73,23 @@ If not enough memory is available, we can keep smaller LRU based cache on each s
 To save space, Store URL fixed-sized checksum instead of url string
 To reduce the number of operations on the database store, keep an in-memory cache of popular URLs on each host shared by all threads.
 8. Checkpointing: Crawling entire web takes weeks to complete. To guard against failures, our crawler can write regular snapshots of its state to the disk. An aborted crawl can easily be restarted from the latest checkpoint.
+
+![image](https://github.com/r-shreesha/Interview-Prep/blob/main/Design_Diagrams/WebCrawlerDesign.png)
+
+### Fault Tolerance
+Use consistent hashing for distribution among crawling servers. It not only help in replacing a dead host but also in distributing load among servers.
+
+### Data Partitioning
+
+Crawler is dealing with the following:
+* URL's to visit
+* URL checksums for dedupe
+* Document checksums for dedupe
+
+Since we are distributing URLs based on the hostname, we can store these data on the same host. These data can be redistributed from overloaded hosts as we are using consistent hashing.
+Each host will perform checkpointing perioically and dump a snapshot of all the data it is holding onto a remote server. 
+
+### Crawler Traps
+There are many crawler traps, spam sites, and cloaked content. A crawler trap is a URL or set of URLs that cause a crawler to crawl indefinitely. Some crawler traps are unintentional. For example, a symbolic link within a file system can create a cycle. Other crawler traps are introduced intentionally. For example, people have written traps that dynamically generate an infinite Web of documents
+
+Anti-spam traps are designed to catch crawlers used by spammers looking for email addresses, while other sites use traps to catch search engine crawlers to boost their search ratings.
