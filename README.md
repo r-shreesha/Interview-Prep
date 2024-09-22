@@ -13,6 +13,17 @@
 - Work Scenarios
   
 # System design
+## Tradeoffs while designing systems
+| Read Heavy  | Write Heavy |
+|---|---|
+| Caching | Database Optimization (Cassandra using LSM trees) |
+| Database Replication | Asynchronous Processing  |
+| CDN | Write Batching and Buffering  |
+| Load Balancing | Database Partitioning  |
+| Data Partitioning | Command Query Request Seggregation (CQRS) - Separate handling for Read and Write  |
+| Optimized Data Retrieval (Indexing frequently queried data or move them all to a one partition) | Event Sourcing  |
+
+
 ## Key Characteristics of a Distributed System
 | Key | Strategies |
 |---|---|
