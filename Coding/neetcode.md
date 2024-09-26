@@ -137,5 +137,28 @@ public:
         return res; // 24, 12, 8, 6
     }
 };
+```
 
+### Longest Consecutive Sequence
+#### Given an array of integers nums, return the length of the longest consecutive sequence of elements.
+A consecutive sequence is a sequence of elements in which each element is exactly 1 greater than the previous element.
+You must write an algorithm that runs in O(n) time.
+
+```cpp
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        unordered_set<int> hash(nums.begin(), nums.end());
+        int ans = 0;
+        int length = 0;
+        for(int i = 0; i < nums.size();i++) {
+            if(hash.count(nums[i]-1) == 0) {
+                int length = 1;
+                while(hash.count(nums[i] + length)) length++;
+                ans = max(ans, length);
+            }
+        }
+        return ans;
+    }
+};
 ```
