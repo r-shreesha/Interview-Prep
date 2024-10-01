@@ -1,5 +1,5 @@
 <details>
-  <summary>Arrays & Hashing</summary>
+  <summary> Arrays & Hashing </summary>
 
 ### Duplicate Integer
 #### Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
@@ -165,4 +165,46 @@ public:
     }
 };
 ```
+</details>
+<details>
+  <summary> Two Pointers </summary>
+</details>
+
+<details>
+  <summary> Sliding Window </summary>
+</details>
+
+<details>
+  <summary> Stack </summary>
+</details>
+
+<details>
+  <summary> Trees </summary>
+</details>
+
+<details>
+  <summary> Heap / Priority Queue </summary>
+</details>
+
+<details>
+  <summary> Graphs </summary>
+</details>
+
+<details>
+  <summary> Tries </summary>
+</details>
+<details>
+  <summary> 1-D Dynamic Programming </summary>
+</details>
+
+<details>
+  <summary> 2-D Dynamic Programming </summary>
+</details>
+
+<details>
+  <summary> Greedy </summary>
+</details>
+
+<details>
+  <summary> Intervals </summary>
 </details>
