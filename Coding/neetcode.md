@@ -166,12 +166,269 @@ public:
 };
 ```
 </details>
+
 <details>
   <summary> Two Pointers </summary>
+  
+  ### Container with Most Water
+  #### You are given an integer array `heights` where `heights[i]` represents the height of the ith bar. You may choose any two bars to form a container. Return the maximum amount of water a container can store.
+  ```cpp
+    int maxArea(vector<int>& heights) {
+        int i = 0;
+        int j = heights.size()-1;
+        int ans = 0;
+        for(;i<j;) {
+            int area = min(heights[i], heights[j]) * (j-i);
+            ans = max(ans, area);
+            if(heights[i] < heights[j]) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+        return ans;
+    }
+  ```
+### Trapping Rain Water
+#### You are given an array non-negative integers `heights` which represent an elevation map. Each value `heights[i]` represents the height of a bar, which has a width of 1.
+```cpp
+int trap(vector<int>& height) {
+    int left = 0, right = height.size() - 1;
+    int leftMax = 0, rightMax = 0, water = 0;
+    
+    while(left < right) {
+        if(height[left] < height[right]) {
+            leftMax = max(leftMax, height[left]);
+            water += leftMax - height[left];
+            left++;
+        } else {
+            rightMax = max(rightMax, height[right]);
+            water += rightMax - height[right];
+            right--;
+        }
+     }
+    return water;
+}
+```
+### 3 Sum 
+#### Find 3 integers in an array that add up to 0.
+```cpp
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> res;
+        sort(nums.begin(), nums.end());
+        for(int i = 0; i < nums.size();i++) {
+            // Ignore all the processed duplicates
+            while(i > 0 && nums[i] == nums[i-1]) i++;
+
+            int l = i + 1;
+            int r = nums.size() - 1;
+            while(l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
+                if(sum < 0) {
+                    l++;
+                } else if(sum > 0) {
+                    r--;
+                } else {
+                    vector<int> triplet{nums[i], nums[l], nums[r]};
+                    res.push_back(triplet);
+                    while(l < r && nums[l] == triplet[1]) l++;
+                    while(l < r && nums[r] == triplet[2]) r--;
+                }
+            }
+        }
+
+        return res;
+    }
+};
+
+```
+
+### Is Palindrome
+#### Given a string, return `true` if it is a palindrome. Return `false` otherwise.
+```cpp
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        for(int i = 0, j = s.length()-1; i < j; ) {
+            if (!isalnum(s[i])) {
+                i++;
+            } else if (!isalnum(s[j])) {
+                j--;
+            } else if (tolower(s[i]) != tolower(s[j])) {
+                return false;
+            } else {
+                i++;
+                j--;
+            }
+        }
+        return true;
+    }
+};
+
+```
 </details>
 
 <details>
   <summary> Sliding Window </summary>
+  
+### Longest Substring without duplicates
+```cpp
+    int lengthOfLongestSubstring(string s) {
+        int len = 0;
+        vector<bool> hash(128, false);
+        int l = 0;
+        for(int r = 0;r < s.length();r++){
+            while(hash[s[r]]) {
+                hash[s[l]] = false;
+                l++;
+            }
+            hash[s[r]] = true;
+            len = max(len, r - l + 1);
+        }
+        return len;
+    }
+```
+### Longest Repeating Substring With Replacement
+```cpp
+    int characterReplacement(string s, int k) {
+        vector<int> count(26, 0);
+        int res = 0;
+        int maxCount = 0;
+        int l = 0;
+        int r = 0;
+        while(r < s.size()){
+            int cur = s[r] - 'A';
+            count[cur]++;
+            maxCount = max(maxCount, count[cur]);
+            
+            /* Move the window if the current window size exceeds
+               maximum duplicate characters with k replacements
+            */
+            if(r - l + 1 > k + maxCount) {
+                int leftCharIndex = s[l] - 'A';
+                count[leftCharIndex]--;
+                l++;
+            }
+            res = max(res, r - l + 1);
+            r++;
+        }
+        return res;
+    }
+```
+### Permutated String inclusion
+#### You are given two strings s1 and s2. Return true if s2 contains a permutation of s1, or false otherwise. That means if a permutation of s1 exists as a substring of s2, then return true.
+```
+Input Examples:
+s1 = "abc", s2 = "lecabee" => true
+s1 = "abc", s2 = "lecaabee" => false
+```
+```cpp
+    bool checkInclusion(string s1, string s2) {
+        vector<int> s1Freq(26,0), s2Freq(26,0);
+        int n = s1.length();
+        int m = s2.length();
+        
+        if(n > m) return false;
+
+        for(int i = 0; i < n; i++) {
+            s1Freq[s1[i] - 'a']++;
+            s2Freq[s2[i] - 'a']++;
+        }
+
+        if(s1Freq == s2Freq) return true; // s2 itself is a permutation of s1
+        
+        // Use sliding window approach
+        for(int i = n; i < m;i++) {
+            s2Freq[s2[i] - 'a']++;  // Include the next right character into the window
+            s2Freq[s2[i-n] - 'a']--; // Remove the first character in the window;
+            if(s1Freq == s2Freq) return true;
+        }
+
+        return false;
+    }
+    // O(m), as comparing two vectors is O(26) which takes constant time.
+```
+### Minimum Window with Characters
+#### Given two strings `s` and `t`, return the shortest substring of `s` such that every character in `t`, including duplicates, is present in the substring. Return `""` if there isn't one.
+```
+Input Examples:
+s = "OUZODYXAZV", t = "XYZ" => "YXAZ"
+s = "x", t = "xy" => ""
+```
+```cpp
+string minWindow(string s, string t) {
+        if(s.empty() || t.empty()) return "";
+
+        unordered_map<char, int> t_count;
+        for(auto c : t) {
+            t_count[c]++;
+        }
+
+        int formed = 0, required = t_count.size();
+        unordered_map<char, int> windowCount;
+
+        int left = 0, right = 0;
+        int minLen = INT_MAX, minLeft = 0, minRight = 0;
+        
+        while( right < s.size() ) {
+            char c = s[right];
+            windowCount[c]++;
+
+            if(t_count.find(c) != t_count.end() && windowCount[c] == t_count[c]) {
+                formed++;
+            }
+
+            while(left <= right && formed == required) {
+                c = s[left];
+
+                if(right - left + 1 < minLen) {
+                    minLen = right - left + 1;
+                    minLeft = left;
+                    minRight = right;
+                }
+
+                windowCount[c]--;
+                if(t_count.find(c) != t_count.end() && windowCount[c] < t_count[c]) {
+                    formed--;
+                }
+                left++;
+            }
+            right++;
+        }
+        return minLen == INT_MAX ? "" : s.substr(minLeft, minLen);
+    }
+```
+### Sliding Window Maximum
+Given an array and `k`, return the maximum element in every window of size k within the array.
+```
+Input: nums = [1,2,1,0,4,2,6], k = 3
+Output: [2,2,4,4,6]
+```
+```cpp
+vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        vector<int> res;
+        deque<int> dq; // store indices
+        int val = INT_MIN;
+        for(int i = 0; i < nums.size();i++) {
+            // Pop front element every time the dq slides
+            if(!dq.empty() && dq.front() == i-k) {
+                dq.pop_front();
+            }
+            // Ensure that dq.front() always contains the largest value
+            while(!dq.empty() && nums[dq.back()] < nums[i]) {
+                dq.pop_back();
+            }
+            dq.push_back(i);
+
+            if(i >= k - 1) {
+                res.push_back(nums[dq.front()]);
+            }
+        }
+        return res;
+    }
+```
 </details>
 
 <details>
