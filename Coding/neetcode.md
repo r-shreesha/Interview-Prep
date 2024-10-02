@@ -294,7 +294,7 @@ public:
 ```cpp
     int characterReplacement(string s, int k) {
         vector<int> count(26, 0);
-        int res = 0;
+        int len = 0;
         int maxCount = 0;
         int l = 0;
         int r = 0;
@@ -311,10 +311,10 @@ public:
                 count[leftCharIndex]--;
                 l++;
             }
-            res = max(res, r - l + 1);
+            len = max(res, r - l + 1);
             r++;
         }
-        return res;
+        return len;
     }
 ```
 ### Permutated String inclusion
