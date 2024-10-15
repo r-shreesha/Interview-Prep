@@ -1,4 +1,6 @@
 Preparing for an Amazon loop interview involves a deep dive into coding, system design, and behavioral questions. Here are strategies and sample questions for each category:
+<details>
+  <summary> Data Structures and Algorithms (Basic) </summary>
 
 ## 1. Coding (Data Structures & Algorithms)
 For this round, focus on fundamental data structures and algorithms. Practice problems on arrays, strings, linked lists, trees, graphs, sorting, searching, and dynamic programming.
@@ -205,8 +207,10 @@ int trap(vector<int>& height) {
 - Practice Regularly: Use platforms like LeetCode, HackerRank, and CodeSignal.
 - Understand Fundamentals: Focus on time complexity, space complexity, and edge cases.
 - Mock Interviews: Simulate real interview conditions with peers or using interview prep tools.
+</details>
 
-
+<details>
+  <summary> Data Structure Design - Logical and Maintainable Code (Basic) </summary>
 ## 2. Coding (Ability to Write Logical & Maintainable Code)
 Here, focus on writing clean, efficient, and well-structured code. Emphasize code readability, modularity, and proper use of data structures.
 
@@ -530,7 +534,10 @@ public:
 - Code Readability: Use meaningful variable names and comments to describe the logic.
 - Modular Code: Break down the problem into functions and classes.
 - Edge Cases: Consider and handle edge cases thoroughly.
+</details>
 
+<details>
+    <summary> Problem Solving (DS & A - Medium to Hard) </summary>
 ## 3. Coding (Problem Solving Focused Session)
 This round emphasizes problem-solving skills and the ability to think through complex problems.
 
@@ -799,7 +806,9 @@ double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
 - Optimize: Aim for optimal solutions, not just correct ones.
 - Dry Run: Walk through your solution with sample inputs.
 - Edge Cases: Consider edge cases and handle them.
-
+</details>
+<details>
+    <summary> System Design</summary>
 ## 4. System Design
 This round tests your ability to design large-scale distributed systems.
 
@@ -829,7 +838,9 @@ This round tests your ability to design large-scale distributed systems.
 - Trade-offs: Discuss trade-offs and justify your design choices.
 - Scalability: Consider scalability and performance implications.
 - Diagrams: Use diagrams to illustrate your design.
-
+</details>
+<details>
+    <summary> Behavioral Interview </summary>
 ## 5. Behavioral Interview
 Amazon's behavioral interviews focus on their Leadership Principles. Prepare examples from your experience that demonstrate these principles.
 
@@ -849,3 +860,4 @@ Amazon's behavioral interviews focus on their Leadership Principles. Prepare exa
 - STAR Method: Use the Situation, Task, Action, Result method to structure your responses.
 - Leadership Principles: Familiarize yourself with Amazon's Leadership Principles and align your examples with them.
 - Practice: Practice your responses to ensure clarity and confidence.
+</details>
