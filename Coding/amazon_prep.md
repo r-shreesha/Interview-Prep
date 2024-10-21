@@ -215,6 +215,14 @@ int trap(vector<int>& height) {
 Here, focus on writing clean, efficient, and well-structured code. Emphasize code readability, modularity, and proper use of data structures.
 
 ### LRU Cache Implementation
+Operations:
+*	put(key, value) – Insert or update key-value pair.
+*	get(key) – Return the value if key exists, otherwise return -1.
+Hint:
+Use Hash Map + Doubly Linked List.
+*	Hash map: For O(1) access to cache items.
+*	Doubly linked list: To track usage order efficiently.
+
 ```cpp
 class LRUCache {
     int capacity;
@@ -307,6 +315,13 @@ public:
 ```
 
 ### Design Hit Counter
+Operations:
+*	hit(timestamp) – Record a hit at a given timestamp (in seconds).
+*	getHits(timestamp) – Get the number of hits in the last 5 minutes (300 seconds).
+Hint:
+Use a Queue/Deque.
+*	Store timestamps in the queue and remove expired hits.
+
 ```cpp
 class HitCounter {
     deque<pair<int,int>> q;
@@ -430,6 +445,15 @@ public:
 ```
 
 ### Design Circular Queue
+Operations:
+*	enQueue(value) – Insert value into the queue.
+*	deQueue() – Remove value from the queue.
+*	Front() – Get the front item.
+*	Rear() – Get the rear item.
+*	isEmpty() / isFull() – Check if the queue is empty or full.
+Hint:
+Use a Circular Array with head and tail pointers.
+
 ```cpp
 class MyCircularQueue {
     vector<int> queue;
@@ -526,6 +550,322 @@ public:
         }
 
         return false;
+    }
+};
+```
+### Design a Twitter Clone
+Operations:
+*	postTweet(userId, tweetId) – Post a tweet.
+*	getNewsFeed(userId) – Retrieve 10 most recent tweets from followed users.
+*	follow(followerId, followeeId) – Follow a user.
+*	unfollow(followerId, followeeId) – Unfollow a user.
+
+Use Hash Map + Min-Heap/Priority Queue.
+*	Hash map: To store user tweets.
+*	Min-Heap: To retrieve the 10 most recent tweets.
+
+```cpp
+#include <unordered_map>
+#include <set>
+#include <vector>
+#include <queue>
+
+class Twitter {
+    int timestamp = 0;
+    std::unordered_map<int, std::set<int>> followers;
+    std::unordered_map<int, std::vector<std::pair<int, int>>> tweets;
+
+public:
+    void postTweet(int userId, int tweetId) {
+        tweets[userId].push_back({timestamp++, tweetId});
+    }
+
+    std::vector<int> getNewsFeed(int userId) {
+        std::priority_queue<std::pair<int, int>> pq;
+        for (auto &[time, tweet] : tweets[userId]) pq.push({time, tweet});
+        for (auto followee : followers[userId])
+            for (auto &[time, tweet] : tweets[followee])
+                pq.push({time, tweet});
+
+        std::vector<int> feed;
+        while (!pq.empty() && feed.size() < 10) {
+            feed.push_back(pq.top().second);
+            pq.pop();
+        }
+        return feed;
+    }
+
+    void follow(int followerId, int followeeId) {
+        if (followerId != followeeId) followers[followerId].insert(followeeId);
+    }
+
+    void unfollow(int followerId, int followeeId) {
+        followers[followerId].erase(followeeId);
+    }
+};
+```
+
+### Design a File System
+Operations:
+*	mkdir(path) – Create a directory.
+*	addContentToFile(path, content) – Add content to a file.
+*	readContentFromFile(path) – Read the content of a file.
+```cpp
+#include <unordered_map>
+#include <string>
+#include <sstream>
+
+class FileSystem {
+    std::unordered_map<std::string, std::string> files;
+
+public:
+    bool mkdir(const std::string &path) {
+        if (files.count(path)) return false;
+        files[path] = "";
+        return true;
+    }
+
+    void addContentToFile(const std::string &path, const std::string &content) {
+        files[path] += content;
+    }
+
+    std::string readContentFromFile(const std::string &path) {
+        return files[path];
+    }
+};
+```
+
+### Design a Snake Game
+Operations:
+*	move(direction) – Move the snake in a given direction and return the score.
+*	Game over if the snake runs into itself or the wall.
+Hint:
+Use a Deque + Hash Set.
+*	Deque: To track the snake’s body.
+*	Hash set: To check collisions.
+
+```cpp
+#include <deque>
+#include <unordered_set>
+#include <vector>
+
+class SnakeGame {
+    int width, height, score = 0;
+    std::deque<std::pair<int, int>> snake;  // Snake's body
+    std::unordered_set<int> snakeSet;  // To check for collisions
+    std::vector<std::pair<int, int>> food;  // Food positions
+    int foodIndex = 0;
+
+    int hash(int row, int col) { return row * width + col; }  // Hashing for 2D coordinates
+
+public:
+    SnakeGame(int width, int height, std::vector<std::pair<int, int>> food) 
+        : width(width), height(height), food(food) {
+        snake.push_back({0, 0});
+        snakeSet.insert(hash(0, 0));
+    }
+
+    int move(std::string direction) {
+        auto head = snake.front();
+        if (direction == "U") head.first--;
+        else if (direction == "D") head.first++;
+        else if (direction == "L") head.second--;
+        else if (direction == "R") head.second++;
+
+        // Check for boundary or self-collision
+        int newHeadHash = hash(head.first, head.second);
+        if (head.first < 0 || head.first >= height || head.second < 0 || head.second >= width ||
+            (snakeSet.count(newHeadHash) && newHeadHash != hash(snake.back().first, snake.back().second)))
+            return -1;  // Game over
+
+        snake.push_front(head);
+        snakeSet.insert(newHeadHash);
+
+        // Eat food
+        if (foodIndex < food.size() && head == food[foodIndex]) {
+            score++;
+            foodIndex++;
+        } else {  // Remove tail if no food eaten
+            auto tail = snake.back();
+            snake.pop_back();
+            snakeSet.erase(hash(tail.first, tail.second));
+        }
+
+        return score;
+    }
+};
+```
+
+### Design a Time-Based Key-Value Store
+Operations:
+*	set(key, value, timestamp) – Store a key-value pair with a timestamp.
+*	get(key, timestamp) – Retrieve the value for a key at the latest timestamp ≤ the given timestamp.
+Hint:
+Use a Hash Map + Sorted List/Map.
+*	Hash map: For fast access by key.
+*	Sorted list: To store values with timestamps.
+
+```cpp
+#include <unordered_map>
+#include <map>
+
+class TimeMap {
+    std::unordered_map<std::string, std::map<int, std::string>> store;
+
+public:
+    void set(const std::string &key, const std::string &value, int timestamp) {
+        store[key][timestamp] = value;
+    }
+
+    std::string get(const std::string &key, int timestamp) {
+        auto it = store[key].upper_bound(timestamp);
+        if (it == store[key].begin()) return "";  // No valid timestamp found
+        return std::prev(it)->second;
+    }
+};
+```
+
+### Design an Autocomplete System
+Operations:
+*	input(c) – Accept a character input and suggest top 3 phrases that start with the current prefix.
+
+Hint:
+Use a Trie + Hash Map.
+*	Trie: For prefix matching.
+*	Hash map: To store sentence frequencies.
+
+```cpp
+#include <unordered_map>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+class AutocompleteSystem {
+    std::unordered_map<std::string, int> frequency;
+    std::string currentInput;
+
+public:
+    AutocompleteSystem(const std::vector<std::pair<std::string, int>> &sentences) {
+        for (const auto &[sentence, freq] : sentences) {
+            frequency[sentence] = freq;
+        }
+    }
+
+    std::vector<std::string> input(char c) {
+        if (c == '#') {  // Store the current input
+            frequency[currentInput]++;
+            currentInput.clear();
+            return {};
+        }
+
+        currentInput += c;
+        std::vector<std::pair<int, std::string>> matches;
+
+        // Find all matching sentences
+        for (const auto &[sentence, freq] : frequency) {
+            if (sentence.find(currentInput) == 0) {
+                matches.emplace_back(-freq, sentence);  // Use negative freq for sorting
+            }
+        }
+
+        // Sort by frequency and lexicographical order
+        std::sort(matches.begin(), matches.end());
+        std::vector<std::string> result;
+        for (int i = 0; i < std::min(3, (int)matches.size()); ++i) {
+            result.push_back(matches[i].second);
+        }
+        return result;
+    }
+};
+```
+
+### Design a Data Structure for O(1) Insert, Delete, and Random Retrieval
+Operations:
+*	insert(val) – Insert a value.
+*	remove(val) – Remove a value.
+*	getRandom() – Return a random value from the set.
+
+Hint:
+Use Hash Map + Dynamic Array.
+*	Hash map: For fast lookups.
+*	Array: To get random elements efficiently.
+```cpp
+#include <unordered_map>
+#include <vector>
+#include <cstdlib>
+
+class RandomizedSet {
+    std::unordered_map<int, int> map;
+    std::vector<int> data;
+
+public:
+    bool insert(int val) {
+        if (map.count(val)) return false;
+        map[val] = data.size();
+        data.push_back(val);
+        return true;
+    }
+
+    bool remove(int val) {
+        if (!map.count(val)) return false;
+        int lastElement = data.back();
+        int index = map[val];
+        data[index] = lastElement;
+        map[lastElement] = index;
+        data.pop_back();
+        map.erase(val);
+        return true;
+    }
+
+    int getRandom() {
+        return data[rand() % data.size()];
+    }
+};
+```
+
+### Design a Leaderboard System
+Operations:
+*	addScore(playerId, score) – Add score for a player.
+*	top(K) – Get the top K players.
+*	reset(playerId) – Reset the score of a player to 0.
+Hint:
+Use a Hash Map + Priority Queue.
+```cpp
+#include <unordered_map>
+#include <map>
+
+class Leaderboard {
+    std::unordered_map<int, int> playerScores;  // playerId -> score
+    std::map<int, int, std::greater<>> scores;  // score -> count of players
+
+public:
+    void addScore(int playerId, int score) {
+        int oldScore = playerScores[playerId];
+        if (oldScore > 0) {
+            scores[oldScore]--;
+            if (scores[oldScore] == 0) scores.erase(oldScore);
+        }
+        int newScore = oldScore + score;
+        playerScores[playerId] = newScore;
+        scores[newScore]++;
+    }
+
+    int top(int K) {
+        int sum = 0;
+        for (auto &[score, count] : scores) {
+            int take = std::min(K, count);
+            sum += take * score;
+            K -= take;
+            if (K == 0) break;
+        }
+        return sum;
+    }
+
+    void reset(int playerId) {
+        int score = playerScores[playerId];
+        scores[score]--;
+        if (scores[score] == 0) scores.erase(score);
+        playerScores.erase(playerId);
     }
 };
 ```
