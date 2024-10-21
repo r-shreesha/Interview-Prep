@@ -218,6 +218,7 @@ Here, focus on writing clean, efficient, and well-structured code. Emphasize cod
 Operations:
 *	put(key, value) – Insert or update key-value pair.
 *	get(key) – Return the value if key exists, otherwise return -1.
+
 Hint:
 Use Hash Map + Doubly Linked List.
 *	Hash map: For O(1) access to cache items.
@@ -318,6 +319,7 @@ public:
 Operations:
 *	hit(timestamp) – Record a hit at a given timestamp (in seconds).
 *	getHits(timestamp) – Get the number of hits in the last 5 minutes (300 seconds).
+
 Hint:
 Use a Queue/Deque.
 *	Store timestamps in the queue and remove expired hits.
@@ -451,6 +453,7 @@ Operations:
 *	Front() – Get the front item.
 *	Rear() – Get the rear item.
 *	isEmpty() / isFull() – Check if the queue is empty or full.
+
 Hint:
 Use a Circular Array with head and tail pointers.
 
@@ -639,6 +642,7 @@ public:
 Operations:
 *	move(direction) – Move the snake in a given direction and return the score.
 *	Game over if the snake runs into itself or the wall.
+
 Hint:
 Use a Deque + Hash Set.
 *	Deque: To track the snake’s body.
@@ -700,6 +704,7 @@ public:
 Operations:
 *	set(key, value, timestamp) – Store a key-value pair with a timestamp.
 *	get(key, timestamp) – Retrieve the value for a key at the latest timestamp ≤ the given timestamp.
+
 Hint:
 Use a Hash Map + Sorted List/Map.
 *	Hash map: For fast access by key.
@@ -828,6 +833,7 @@ Operations:
 *	addScore(playerId, score) – Add score for a player.
 *	top(K) – Get the top K players.
 *	reset(playerId) – Reset the score of a player to 0.
+
 Hint:
 Use a Hash Map + Priority Queue.
 ```cpp
